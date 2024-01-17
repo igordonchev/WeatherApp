@@ -1,22 +1,21 @@
-// App.js
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Header from './components/Header'; // Assuming you have a Header component
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Header from './components/Header';
 import Home from './pages/Home';
-import WeatherForecast from './pages/WeatherForecast';
+import WeatherForecastPage from './pages/WeatherForecastPage';
 
-function App() {
+const App = () => {
   return (
     <Router>
       <div>
-        <Header />
+        <Header showHeader={true} />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/weather" element={<WeatherForecast />} />
+          <Route path="/weather-forecast" element={<WeatherForecastPage />} />
         </Routes>
       </div>
     </Router>
   );
-}
+};
 
 export default App;

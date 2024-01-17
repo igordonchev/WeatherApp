@@ -8,24 +8,16 @@ const CurrentLocationWeather = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        navigator.geolocation.getCurrentPosition(
-          async (position) => {
-            const { latitude, longitude } = position.coords;
+        const position = await getCurrentLocation();
 
-            const response = await api.get('/weather', {
-              params: {
-                lat: latitude,
-                lon: longitude,
-              },
-            });
-
-            setWeatherData(response.data);
+        const response = await api.get('/weather', {
+          params: {
+            lat: position.latitude,
+            lon: position.longitude,
           },
-          (error) => {
-            console.error('Error getting location:', error);
-            setError('Unable to retrieve location. Please check your browser settings.');
-          }
-        );
+        });
+
+        setWeatherData(response.data);
       } catch (error) {
         console.error('Error fetching weather data:', error);
         setError('Error fetching weather data. Please try again later.');
@@ -34,6 +26,24 @@ const CurrentLocationWeather = () => {
 
     fetchData();
   }, []);
+
+  const getCurrentLocation = () => {
+    return new Promise((resolve, reject) => {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          resolve({
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude,
+          });
+        },
+        (error) => {
+          console.error('Error getting location:', error);
+          setError('Unable to retrieve location. Please check your browser settings.');
+          reject(error);
+        }
+      );
+    });
+  };
 
   const getWeatherIcon = (iconCode) => {
     return `http://openweathermap.org/img/wn/${iconCode}.png`;

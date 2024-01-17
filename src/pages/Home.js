@@ -1,14 +1,12 @@
-// Home.js
 import React from 'react';
-import Header from '../components/Header'; // Adjust the path accordingly
-import CurrentLocationWeather from '../pages/CurrentLocationWeather'; // Adjust the path accordingly
-import WeatherForecast from '../pages/WeatherForecast'; // Adjust the path accordingly
+import Header from '../components/Header';
+import CurrentLocationWeather from '../components/CurrentLocationWeather';
+import WeatherForecast from './WeatherForecastPage';
 
 const Home = () => {
   return (
     <div>
-      <Header />
-      {/* Add your navigation menu */}
+      <Header showHeader={true} /> {/* Pass a prop to indicate whether to show the header */}
       <CurrentLocationWeather />
       <WeatherForecast />
     </div>
