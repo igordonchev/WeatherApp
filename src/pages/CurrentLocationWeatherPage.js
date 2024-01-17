@@ -1,5 +1,6 @@
 import React from 'react';
-import CurrentLocationWeather from '../components/CurrentLocationWeather';
+import Header from '../components/Header';
+import WeatherForecast from '../components/WeatherForecast';
 
 const CurrentLocationWeatherPage = () => {
   return (

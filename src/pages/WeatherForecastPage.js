@@ -6,7 +6,7 @@ import WeatherForecast from '../components/WeatherForecast';
 const WeatherForecastPage = () => {
   return (
     <div>
-      <Header />
+      <Header showHeader={true} /> {/* Pass a prop to indicate whether to show the header */}
       <WeatherForecast />
     </div>
   );
