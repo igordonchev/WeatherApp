@@ -1,14 +1,18 @@
 import React from 'react';
 import Header from '../components/Header';
-import WeatherForecast from '../components/WeatherForecast';
-import CurrentLocationWeather from '../components/CurrentLocationWeather'; // Import the CurrentLocationWeather component
+import Navigation from '../components/Navigation';
+import CurrentLocationWeather from '../components/CurrentLocationWeather';
+import '../styles/common.css';
 
 const CurrentLocationWeatherPage = () => {
   return (
-    <div>
+    <div className="current-location-weather-page">
       <Header />
-      <h1>Current Location Weather</h1>
-      <CurrentLocationWeather />
+      <Navigation />
+      <div className="main-content">
+        <h1>Current Location Weather</h1>
+        <CurrentLocationWeather />
+      </div>
     </div>
   );
 };
