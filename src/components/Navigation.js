@@ -4,10 +4,15 @@ import { Link } from 'react-router-dom';
 
 const Navigation = () => {
   return (
-    <nav>
-      <Link to="/">Home</Link>
-      <Link to="/weather-forecast">Weather Forecast</Link>
-    </nav>
+    <div className="nav-container">
+      <nav>
+        {/* Your navigation links go here */}
+        <Link to="/">Home</Link>
+        <Link to="/weather-forecast">Weather Forecast</Link>
+        <Link to="/current-location-weather">Go to Current Location Weather</Link>
+        {/* Add more links as needed */}
+      </nav>
+    </div>
   );
 };
 

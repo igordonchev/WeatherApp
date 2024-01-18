@@ -1,14 +1,12 @@
-// WeatherForecastPage.js
 import React from 'react';
-import Header from '../components/Header';
+import Layout from '../components/Layout';
 import WeatherForecast from '../components/WeatherForecast';
 
 const WeatherForecastPage = () => {
   return (
-    <div>
-      <Header showHeader={true} /> {/* Pass a prop to indicate whether to show the header */}
+    <Layout>
       <WeatherForecast />
-    </div>
+    </Layout>
   );
 };
 

@@ -1,0 +1,75 @@
+/* ... Your existing styles ... */
+
+/* Header styles */
+header {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #eee;
+    width: 100%;
+    margin-bottom: 20px; /* Adjust the space below the header */
+  }
+  
+  img {
+    max-width: 100%;
+    max-height: 80px; /* Adjust the max-height for the logo */
+    margin-right: 10px;
+  }
+  
+  h1 {
+    margin: 0;
+  }
+  
+  /* Navigation styles */
+  .nav-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 180px;
+    position: fixed;
+    top: 127px; /* Adjust the top position to avoid covering the header */
+    left: 0;
+    background-color: #eee;
+    padding: 20px;
+  }
+  
+  /* Adjust the gap between Location Weather and Go to Current Location Weather */
+  .nav-container a {
+    margin-bottom: 10px; /* Adjust as needed */
+    display: block; /* Display each link on a separate line */
+  }
+  
+  /* Content container styles */
+  .content-container {
+    display: flex;
+    margin-top: 127px; /* Adjust the margin-top to account for the fixed navigation */
+  }
+  
+  /* Main content styles */
+  .main-content {
+    flex: 1;
+    padding: 20px;
+    margin-top: 10px; /* Adjust the top margin as needed */
+    margin-right: 20px; /* Adjust the right margin as needed */
+  }
+  
+  /* Current Location Weather styles */
+  .current-location-weather {
+    margin-left: auto; /* Align to the right */
+    margin-right: auto; /* Align to the left */
+    text-align: center; /* Center the content */
+    max-width: 400px; /* Set a max-width to control the width */
+  }
+  
+  /* Home specific styles */
+  .home-container {
+    padding: 20px;
+  }
+  
+  /* Ensure that the navigation menu does not overlap the logo */
+  .nav-container img {
+    margin-bottom: 20px; /* Adjust as needed */
+  }
+  
+  /* Add more styles as needed */
+  

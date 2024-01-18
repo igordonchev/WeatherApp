@@ -1,18 +1,18 @@
-// components/Layout.js
 import React from 'react';
 import Header from './Header';
-import { Route, Routes } from 'react-router-dom';
-import Home from '../pages/Home';
-import WeatherForecast from '../pages/WeatherForecast';
+import Navigation from './Navigation';
+import '../styles/common.css';
 
-const Layout = () => {
+const Layout = ({ children }) => {
   return (
-    <div>
+    <div className="weather-forecast-page-container">
       <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/weather" element={<WeatherForecast />} />
-      </Routes>
+      <div className="content-container">
+        <Navigation />
+        <div className="main-content">
+          {children}
+        </div>
+      </div>
     </div>
   );
 };
