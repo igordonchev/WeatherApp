@@ -1,75 +1,101 @@
-/* ... Your existing styles ... */
+/* Reset some default browser styles */
+body, h1, h2, h3, p, ul, li {
+  margin: 0;
+  padding: 0;
+}
+
+/* Apply a simple box-sizing for easier layout calculations */
+* {
+  box-sizing: border-box;
+}
+
+/* Global styles */
+body {
+  font-family: 'Arial', sans-serif;
+}
 
 /* Header styles */
 header {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    background-color: #eee;
-    width: 100%;
-    margin-bottom: 20px; /* Adjust the space below the header */
-  }
-  
-  img {
-    max-width: 100%;
-    max-height: 80px; /* Adjust the max-height for the logo */
-    margin-right: 10px;
-  }
-  
-  h1 {
-    margin: 0;
-  }
-  
-  /* Navigation styles */
-  .nav-container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 180px;
-    position: fixed;
-    top: 127px; /* Adjust the top position to avoid covering the header */
-    left: 0;
-    background-color: #eee;
-    padding: 20px;
-  }
-  
-  /* Adjust the gap between Location Weather and Go to Current Location Weather */
-  .nav-container a {
-    margin-bottom: 10px; /* Adjust as needed */
-    display: block; /* Display each link on a separate line */
-  }
-  
-  /* Content container styles */
-  .content-container {
-    display: flex;
-    margin-top: 127px; /* Adjust the margin-top to account for the fixed navigation */
-  }
-  
-  /* Main content styles */
-  .main-content {
-    flex: 1;
-    padding: 20px;
-    margin-top: 10px; /* Adjust the top margin as needed */
-    margin-right: 20px; /* Adjust the right margin as needed */
-  }
-  
-  /* Current Location Weather styles */
-  .current-location-weather {
-    margin-left: auto; /* Align to the right */
-    margin-right: auto; /* Align to the left */
-    text-align: center; /* Center the content */
-    max-width: 400px; /* Set a max-width to control the width */
-  }
-  
-  /* Home specific styles */
-  .home-container {
-    padding: 20px;
-  }
-  
-  /* Ensure that the navigation menu does not overlap the logo */
-  .nav-container img {
-    margin-bottom: 20px; /* Adjust as needed */
-  }
-  
-  /* Add more styles as needed */
-  
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: #eee;
+  width: 100%;
+  margin-bottom: 20px; /* Adjust the space below the header */
+}
+
+img {
+  max-width: 100%;
+  max-height: 80px; /* Adjust the max-height for the logo */
+  margin-right: 10px;
+}
+
+h1 {
+  margin: 0;
+}
+
+/* Navigation styles */
+.nav-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 180px;
+  position: fixed;
+  top: 127px; /* Adjust the top position to avoid covering the header */
+  left: 0;
+  background-color: #eee;
+  padding: 20px;
+}
+
+/* Adjust the gap between Location Weather and Go to Current Location Weather */
+.nav-container a {
+  margin-bottom: 10px; /* Adjust as needed */
+  display: block; /* Display each link on a separate line */
+}
+
+/* Remove the active link style */
+.nav-container a:focus {
+  outline: none; /* Remove the default focus outline */
+  text-decoration: none; /* Remove underline */
+  color: inherit; /* Use the default text color */
+  font-weight: inherit; /* Use the default font weight */
+}
+
+/* Content container styles */
+.content-container {
+  display: flex;
+  margin-top: 127px; /* Adjust the margin-top to account for the fixed navigation */
+}
+
+/* Main content styles */
+.main-content {
+  flex: 1;
+  padding: 20px;
+  margin-top: 10px; /* Adjust the top margin as needed */
+  margin-right: 20px; /* Adjust the right margin as needed */
+}
+
+/* Current Location Weather styles */
+.current-location-weather {
+  margin-left: auto; /* Align to the right */
+  margin-right: auto; /* Align to the left */
+  text-align: center; /* Center the content */
+  max-width: 400px; /* Set a max-width to control the width */
+}
+
+/* Home specific styles */
+.home-container {
+  padding: 20px;
+}
+
+/* Weather Forecast Page specific styles */
+.weather-forecast-page {
+  padding: 20px;
+}
+
+/* Ensure that the navigation menu does not overlap the logo */
+.nav-container img {
+  margin-bottom: 20px; /* Adjust as needed */
+}
+
+/* Add more styles as needed */

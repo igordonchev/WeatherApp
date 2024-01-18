@@ -2,7 +2,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
-import WeatherForecast from './components/WeatherForecast';
+import WeatherForecastPage from './pages/WeatherForecastPage';
 import CurrentLocationWeatherPage from './pages/CurrentLocationWeatherPage';
 
 const App = () => {
@@ -10,7 +10,7 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/weather-forecast" element={<WeatherForecast />} />
+        <Route path="/weather-forecast" element={<WeatherForecastPage />} />
         <Route path="/current-location-weather" element={<CurrentLocationWeatherPage />} />
       </Routes>
     </Router>

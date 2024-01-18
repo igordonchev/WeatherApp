@@ -9,7 +9,7 @@ const Navigation = () => {
         {/* Your navigation links go here */}
         <Link to="/">Home</Link>
         <Link to="/weather-forecast">Weather Forecast</Link>
-        <Link to="/current-location-weather">Go to Current Location Weather</Link>
+        <Link to="/current-location-weather">Current Location Weather</Link>
         {/* Add more links as needed */}
       </nav>
     </div>
