@@ -6,11 +6,11 @@ const Navigation = () => {
   return (
     <div className="nav-container">
       <nav>
-        {/* Your navigation links go here */}
         <Link to="/">Home</Link>
         <Link to="/weather-forecast">Weather Forecast</Link>
         <Link to="/current-location-weather">Current Location Weather</Link>
-        {/* Add more links as needed */}
+        <Link to="/hourly-forecast">Hourly Forecast</Link> {/* Add this line */}
+        <Link to="/daily-forecast">Daily Forecast</Link> {/* Add this line */}
       </nav>
     </div>
   );

@@ -1,3 +1,26 @@
+/* Reset some default browser styles */
+body,
+h1,
+h2,
+h3,
+p,
+ul,
+li,
+figure,
+figcaption {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+}
+
+/* Apply a box-sizing border-box model to all elements */
+* {
+  box-sizing: border-box;
+}
+
 /* Header styles */
 header {
   display: flex;
@@ -5,12 +28,12 @@ header {
   padding: 10px;
   background-color: #eee;
   width: 100%;
-  margin-bottom: 20px; /* Adjust the space below the header */
+  margin-bottom: 20px;
 }
 
 img {
   max-width: 100%;
-  max-height: 80px; /* Adjust the max-height for the logo */
+  max-height: 80px;
   margin-right: 10px;
 }
 
@@ -25,50 +48,48 @@ h1 {
   align-items: flex-start;
   width: 180px;
   position: fixed;
-  top: 127px; /* Adjust the top position to avoid covering the header */
+  top: 167px; /* Adjust the top position to avoid covering the header */
   left: 0;
   background-color: #eee;
   padding: 20px;
 }
 
-/* Adjust the gap between Location Weather and Go to Current Location Weather */
 .nav-container a {
-  margin-bottom: 10px; /* Adjust as needed */
-  display: block; /* Display each link on a separate line */
+  margin-bottom: 10px;
+  display: block;
 }
 
-/* Remove the active link style */
 .nav-container a:focus {
-  outline: none; /* Remove the default focus outline */
-  text-decoration: none; /* Remove underline */
-  color: inherit; /* Use the default text color */
-  font-weight: inherit; /* Use the default font weight */
+  outline: none;
+  text-decoration: none;
+  color: inherit;
+  font-weight: inherit;
 }
 
 /* Content container styles */
 .content-container {
   display: flex;
-  margin-top: 127px; /* Adjust the margin-top to account for the fixed navigation */
+  margin-top: 127px;
 }
 
 /* Main content styles */
 .main-content {
   flex: 1;
   padding: 20px;
-  margin-top: 10px; /* Adjust the top margin as needed */
-  margin-right: 20px; /* Adjust the right margin as needed */
+  margin-top: 40px; /* Adjust the top margin */
+  margin-right: 20px;
 }
 
-/* Current Location Weather Page specific styles */
+/* Additional styles for Current Location Weather Page */
 .current-location-weather-page {
   padding: 20px;
-  display: flex; /* Use flexbox to manage layout */
-  flex-direction: column; /* Stack children vertically */
+  display: flex;
+  flex-direction: column;
 }
 
 /* Ensure that the navigation menu does not overlap the logo */
 .nav-container img {
-  margin-bottom: 20px; /* Adjust as needed */
+  margin-bottom: 20px;
 }
 
 /* Add more styles as needed */
