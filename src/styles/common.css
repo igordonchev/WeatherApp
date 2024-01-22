@@ -1,3 +1,4 @@
+/* common.css */
 /* Reset some default browser styles */
 body,
 h1,
@@ -48,7 +49,7 @@ h1 {
   align-items: flex-start;
   width: 180px;
   position: fixed;
-  top: 167px; /* Adjust the top position to avoid covering the header */
+  top: 80px; /* Adjust the top position to avoid covering the header */
   left: 0;
   background-color: #eee;
   padding: 20px;
@@ -69,7 +70,7 @@ h1 {
 /* Content container styles */
 .content-container {
   display: flex;
-  margin-top: 127px;
+  margin-top: 180px;
 }
 
 /* Main content styles */

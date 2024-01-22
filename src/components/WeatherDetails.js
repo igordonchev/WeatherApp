@@ -1,48 +1,39 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+// WeatherDetails.js
+import React, { useEffect, useState } from 'react';
+import WeatherCurrent from './WeatherCurrent';
 
 const WeatherDetails = ({ location }) => {
-  const [weatherData, setWeatherData] = useState(null);
-  const [error, setError] = useState(null);
+  const [currentWeather, setCurrentWeather] = useState(null);
+  const [locationName, setLocationName] = useState(null);
 
   useEffect(() => {
-    const fetchWeatherDetails = async () => {
-      try {
-        const response = await axios.get('https://api.openweathermap.org/data/2.5/weather', {
-          params: {
-            q: location, // Include the location parameter
-            appid: 'd5ffaf58a30ebe18ca5f64b1e284543a',
-            units: 'metric',
-          },
-        });
+    const fetchWeatherData = async () => {
+      if (!location) return;
 
-        setWeatherData(response.data);
-        setError(null);
+      // Include your API key directly (replace 'YOUR_API_KEY' with your actual key)
+      const apiKey = 'd5ffaf58a30ebe18ca5f64b1e284543a';
+
+      try {
+        // Current Weather API Call
+        const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${location.lat}&lon=${location.lon}&appid=${apiKey}`;
+        const currentWeatherResponse = await fetch(currentWeatherUrl);
+        const currentWeatherData = await currentWeatherResponse.json();
+        setCurrentWeather(currentWeatherData);
+
+        // Set the location name
+        setLocationName(currentWeatherData.name);
       } catch (error) {
-        console.error('Error fetching weather details:', error);
-        setError('Error fetching weather details. Please try again later.');
+        console.error('Error fetching weather data:', error);
       }
     };
 
-    if (location) {
-      fetchWeatherDetails();
-    }
+    fetchWeatherData();
   }, [location]);
 
   return (
     <div>
-      {error ? (
-        <p>{error}</p>
-      ) : weatherData ? (
-        <div>
-          {/* Display relevant weather details from weatherData */}
-          <p>Temperature: {weatherData.main.temp}°C</p>
-          <p>Humidity: {weatherData.main.humidity}%</p>
-          {/* Add more details as needed */}
-        </div>
-      ) : (
-        <p>Loading weather details...</p>
-      )}
+      {currentWeather && <WeatherCurrent currentWeather={currentWeather} locationName={locationName} />}
+      {/* Add other components for hourly and daily forecast as needed */}
     </div>
   );
 };

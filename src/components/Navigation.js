@@ -1,4 +1,3 @@
-// Navigation.js
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -9,8 +8,8 @@ const Navigation = () => {
         <Link to="/">Home</Link>
         <Link to="/weather-forecast">Weather Forecast</Link>
         <Link to="/current-location-weather">Current Location Weather</Link>
-        <Link to="/hourly-forecast">Hourly Forecast</Link> {/* Add this line */}
-        <Link to="/daily-forecast">Daily Forecast</Link> {/* Add this line */}
+        <Link to="/hourly-forecast">Hourly Forecast</Link>
+        <Link to="/daily-forecast">Daily Forecast</Link>
       </nav>
     </div>
   );

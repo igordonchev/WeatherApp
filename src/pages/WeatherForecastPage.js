@@ -1,6 +1,6 @@
 // WeatherForecastPage.js
 import React from 'react';
-import { Link } from 'react-router-dom'; // Add this line to import Link
+import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Navigation from '../components/Navigation';
 import WeatherForecast from '../components/WeatherForecast';
@@ -13,11 +13,9 @@ const WeatherForecastPage = () => {
       <div className="content-container">
         <Navigation />
         <div className="main-content">
-          {/* Use the WeatherForecast component here */}
           <WeatherForecast />
         </div>
       </div>
-      {/* Add any additional elements or links as needed */}
       <Link to="/current-location-weather">Go to Current Location Weather</Link>
     </div>
   );

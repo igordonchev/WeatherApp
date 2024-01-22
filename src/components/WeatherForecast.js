@@ -1,3 +1,4 @@
+// WeatherForecast.js
 import React, { useState } from 'react';
 import WeatherDetails from './WeatherDetails';
 
@@ -11,7 +12,6 @@ const WeatherForecast = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Set the submitted location, which will trigger the API call in WeatherDetails
     setSubmittedLocation(location);
   };
 
