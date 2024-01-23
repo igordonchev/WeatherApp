@@ -1,17 +1,18 @@
-// Header.js
 import React from 'react';
-import '../styles/common.css'; // Import the common styles
+import { Link } from 'react-router-dom';
+import '../styles/common.css';
 
 const Header = () => {
   return (
     <header>
       {/* Your logo as a link to the home page */}
-      <a href="/" className="logo-link">
+      <Link to="/">
         <img
           src="/assets/images/weather.jpg" // Update with the correct path
           alt="Weather App Logo"
+          style={{ maxWidth: '100px', maxHeight: '80px', marginRight: '10px' }}
         />
-      </a>
+      </Link>
       
       {/* Your website name */}
       <h1>Weather Forecast App</h1>

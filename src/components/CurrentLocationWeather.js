@@ -50,7 +50,7 @@ const CurrentLocationWeather = () => {
   };
 
   return (
-    <div>
+    <div className="current-location-weather">
       {error ? (
         <p>{error}</p>
       ) : (
