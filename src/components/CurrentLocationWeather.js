@@ -45,24 +45,45 @@ const CurrentLocationWeather = () => {
     });
   };
 
+  // Function to get the weather icon
   const getWeatherIcon = (iconCode) => {
     return `http://openweathermap.org/img/wn/${iconCode}.png`;
   };
 
+  // Function to get the current time with a big "H" and no minutes
+  const getCurrentTime = () => {
+    const currentHour = new Date().getHours();
+    const formattedHour = currentHour < 10 ? `0${currentHour}` : `${currentHour}`;
+    return `${formattedHour} H`;
+  };
+
   return (
-    <div className="current-location-weather">
+    <div className="current-location-weather" style={{ textAlign: 'center' }}>
       {error ? (
         <p>{error}</p>
       ) : (
         weatherData && (
           <div>
-            <h2>Current Weather for {weatherData.name}</h2>
-            <p>Temperature: {weatherData.main.temp} °C</p>
+            <h2 style={{ fontSize: '1.5em' }}>Weather for {weatherData.name}</h2>
+            {/* Display actual temperature, weather icon, and current time */}
+            <p style={{ fontSize: '3em', fontWeight: 'bold' }}>
+              {Math.round(weatherData.main.temp)} °C{' '}
+              <img
+                src={getWeatherIcon(weatherData.weather[0].icon)}
+                alt={weatherData.weather[0].description}
+                style={{ verticalAlign: 'middle', width: '3em', height: '3em' }}
+              />
+              {getCurrentTime()}
+            </p>
+            <p style={{ fontSize: '1.2em' }}>
+              {new Date().toLocaleDateString(undefined, {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+              })}
+            </p>
             <p>Weather: {weatherData.weather[0].description}</p>
-            <img
-              src={getWeatherIcon(weatherData.weather[0].icon)}
-              alt={weatherData.weather[0].description}
-            />
             <p>Humidity: {weatherData.main.humidity}%</p>
             <p>Wind Speed: {weatherData.wind.speed} m/s</p>
             <p>Pressure: {weatherData.main.pressure} hPa</p>
