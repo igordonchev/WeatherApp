@@ -93,3 +93,14 @@ h1 {
 .nav-container img {
   margin-bottom: 20px;
 }
+
+/* Footer styles */
+.footer {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #eee;
+}
+
+.footer-content {
+  text-align: center;
+}
