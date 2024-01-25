@@ -1,8 +1,8 @@
+// FiveDayForecastPage.js
+
 import React, { useState } from 'react';
-import Header from '../components/Header';
-import Navigation from '../components/Navigation';
-import Footer from '../components/Footer';
 import api from '../components/api'; // Adjust the path accordingly
+import Layout from '../components/Layout';
 import '../styles/common.css';
 
 const FiveDayForecastPage = () => {
@@ -18,67 +18,57 @@ const FiveDayForecastPage = () => {
         },
       });
 
-      // Group forecast data by day
-      const groupedData = groupByDay(response.data.list);
-
-      setForecastData(groupedData);
+      setForecastData(response.data);
     } catch (error) {
       console.error('Error fetching forecast data:', error);
       setError('Error fetching forecast data. Please try again later.');
     }
   };
 
-  // Function to group forecast data by day
-  const groupByDay = (data) => {
-    return data.reduce((result, item) => {
-      const date = new Date(item.dt * 1000).toLocaleDateString();
-
-      if (!result[date]) {
-        result[date] = [];
-      }
-
-      result[date].push(item);
-
-      return result;
-    }, {});
-  };
+  const roundTemperature = (temperature) => Math.round(temperature);
 
   return (
-    <div className="five-day-forecast-page">
-      <Header />
-      <Navigation />
-      <div className="main-content">
-        <h1>5-Day Forecast</h1>
-        <form>
-          <label>
-            Location:
-            <input type="text" value={location} onChange={(e) => setLocation(e.target.value)} />
-          </label>
-          <button type="button" onClick={handleGetForecastClick}>
-            Get Forecast
-          </button>
-        </form>
-        {error && <p>{error}</p>}
-        {forecastData && (
-          <div>
-            {Object.entries(forecastData).map(([day, dayData]) => (
-              <div key={day}>
-                <h2>{`Forecast for ${day}`}</h2>
-                {/* Display forecast information for the day */}
-                {dayData.map((item) => (
-                  <div key={item.dt}>
-                    <p>{new Date(item.dt * 1000).toLocaleString()}</p>
-                    <p>Temperature: {item.main.temp} °C</p>
-                    {/* Add more details as needed */}
-                  </div>
-                ))}
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
-      <Footer />
-    </div>
+    <Layout>
+      <form>
+        <label>
+          Location:
+          <input type="text" value={location} onChange={(e) => setLocation(e.target.value)} />
+        </label>
+        <button type="button" onClick={handleGetForecastClick}>
+          Get Forecast
+        </button>
+      </form>
+      {error && <p>{error}</p>}
+      {forecastData && (
+        <div>
+          {Object.entries(forecastData.list.reduce((acc, item) => {
+            const date = new Date(item.dt * 1000).toLocaleDateString();
+            if (!acc[date]) {
+              acc[date] = [];
+            }
+            acc[date].push(item);
+            return acc;
+          }, {})).map(([date, items]) => (
+            <div key={date}>
+              <h2>{date}</h2>
+              {items.map((item) => (
+                <div key={item.dt} className="forecast-item">
+                  <p>{new Date(item.dt * 1000).toLocaleTimeString()}</p>
+                  <p>Temperature: {roundTemperature(item.main.temp)} °C</p>
+                  {item.weather && item.weather.length > 0 && (
+                    <img
+                      src={`http://openweathermap.org/img/w/${item.weather[0].icon}.png`}
+                      alt={item.weather[0].description}
+                    />
+                  )}
+                  {/* Add more details as needed */}
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+      )}
+    </Layout>
   );
 };
 
