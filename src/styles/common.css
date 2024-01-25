@@ -70,9 +70,9 @@ h1 {
 /* Content container styles */
 .content-container {
   display: flex;
-  justify-content: center; /* Center the content horizontally */
-  align-items: flex-start;
-  margin-top: 80px; /* Adjust the top margin to account for the navigation */
+  flex-direction: column; /* Updated to column to stack header, main, and footer vertically */
+  align-items: center; /* Center the content horizontally */
+  margin-top: 20px; /* Adjust the top margin to center content below the header */
 }
 
 /* Main content styles */
