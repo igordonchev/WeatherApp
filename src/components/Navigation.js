@@ -8,7 +8,7 @@ const Navigation = () => {
       <Link to="/">Home</Link>
       <Link to="/weather-forecast">Weather Forecast</Link>
       <Link to="/current-location-weather">Current Location Weather</Link>
-      <Link to="/five-day-forecast">Five Day Forecast</Link>
+      <Link to="/five-days-hourly-forecast">Five Days Hourly Forecast</Link>
       {/* Remove the links for Hourly Forecast and Daily Forecast */}
     </nav>
   );

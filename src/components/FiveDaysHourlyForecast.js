@@ -1,16 +1,88 @@
 // FiveDaysHourlyForecast.js
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import WeatherDetails from './WeatherDetails';
 import api from './api'; // Import the api module or adjust the path accordingly
 import '../styles/common.css'; // Add or adjust the path for the stylesheet
 
 const FiveDaysHourlyForecast = () => {
-  // Your component logic for the Five Days Hourly Forecast goes here
+  const [location, setLocation] = useState('');
+  const [submittedLocation, setSubmittedLocation] = useState('');
+  const [forecastData, setForecastData] = useState(null);
+  const [error, setError] = useState(null);
+
+  const handleLocationChange = (event) => {
+    setLocation(event.target.value);
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      const response = await api.get('/forecast', {
+        params: {
+          q: location,
+        },
+      });
+
+      setForecastData(response.data);
+      setError(null);
+    } catch (error) {
+      console.error('Error fetching forecast data:', error);
+      setForecastData(null);
+      setError('Error fetching forecast data. Please try again later.');
+    }
+
+    // Set the submitted location, which will trigger the API call in WeatherDetails
+    setSubmittedLocation(location);
+  };
+
+  const roundTemperature = (temperature) => Math.round(temperature);
 
   return (
     <div>
-      {/* Your JSX for the Five Days Hourly Forecast page */}
-      <h1>Five Days Hourly Forecast</h1>
-      {/* Add other content as needed */}
+      <form onSubmit={handleSubmit}>
+        <label>
+          Enter Location:
+          <input
+            type="text"
+            value={location}
+            onChange={handleLocationChange}
+            placeholder="Enter location"
+          />
+        </label>
+        <button type="submit">Get Forecast</button>
+      </form>
+
+      {error && <p>{error}</p>}
+
+      {forecastData && (
+        <div>
+          {Object.entries(forecastData.list.reduce((acc, item) => {
+            const date = new Date(item.dt * 1000).toLocaleDateString();
+            if (!acc[date]) {
+              acc[date] = [];
+            }
+            acc[date].push(item);
+            return acc;
+          }, {})).map(([date, items]) => (
+            <div key={date}>
+              <h2>{date}</h2>
+              {items.map((item) => (
+                <div key={item.dt} className="forecast-item">
+                  <p>{new Date(item.dt * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</p>
+                  <img
+                    src={`http://openweathermap.org/img/w/${item.weather[0].icon}.png`}
+                    alt={item.weather[0].description}
+                  />
+                  <p>{roundTemperature(item.main.temp)} °C</p>
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+      )}
+
+      <WeatherDetails location={submittedLocation} />
     </div>
   );
 };

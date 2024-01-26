@@ -1,22 +1,24 @@
 // FiveDaysHourlyForecastPage.js
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Navigation from '../components/Navigation';
-import FiveDaysHourlyForecast from '../components/FiveDaysHourlyForecast';  // Adjust the path accordingly
+import FiveDaysHourlyForecast from '../components/FiveDaysHourlyForecast'; // Updated import
 import '../styles/common.css';
 
 const FiveDaysHourlyForecastPage = () => {
   return (
-    <div className="five-days-hourly-forecast-page">
+    <div className="five-days-hourly-forecast-page"> {/* Updated class name */}
       <Header />
       <div className="content-container">
         <Navigation />
         <div className="main-content">
-          <h1>Five Days Hourly Forecast</h1>
+          {/* Updated component name */}
           <FiveDaysHourlyForecast />
-          {/* Add other content specific to the Five Days Hourly Forecast page */}
         </div>
       </div>
+      {/* Add any additional elements or links as needed */}
+      <Link to="/current-location-weather">Go to Current Location Weather</Link>
     </div>
   );
 };
