@@ -37,7 +37,13 @@ const WeatherDetails = ({ location }) => {
           {/* Display forecast information as needed */}
           {forecastData.list.map((item) => (
             <div key={item.dt}>
-              <p>{new Date(item.dt * 1000).toLocaleString()}</p>
+              <p>
+                {new Date(item.dt * 1000).toLocaleTimeString([], {
+                  hour: '2-digit',
+                  minute: '2-digit',
+                  hour12: false,
+                })}
+              </p>
               <p>Temperature: {item.main.temp} °C</p>
               <p>Humidity: {item.main.humidity}%</p>
               {/* Add more details as needed */}

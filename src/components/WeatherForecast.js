@@ -1,5 +1,5 @@
 // WeatherForecast.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import WeatherDetails from './WeatherDetails';
 import api from './api'; // Import the api module or adjust the path accordingly
 import '../styles/common.css'; // Add or adjust the path for the stylesheet
@@ -38,6 +38,14 @@ const WeatherForecast = () => {
 
   const roundTemperature = (temperature) => Math.round(temperature);
 
+  const formatDate = (timestamp) => {
+    const date = new Date(timestamp * 1000);
+    const hours = date.getHours();
+    const minutes = ('0' + date.getMinutes()).slice(-2);
+
+    return `${hours}:${minutes}`;
+  };
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -69,7 +77,7 @@ const WeatherForecast = () => {
               <h2>{date}</h2>
               {items.map((item) => (
                 <div key={item.dt} className="forecast-item">
-                  <p>{new Date(item.dt * 1000).toLocaleTimeString()}</p>
+                  <p>{formatDate(item.dt)}</p>
                   <img
                     src={`http://openweathermap.org/img/w/${item.weather[0].icon}.png`}
                     alt={item.weather[0].description}
@@ -88,4 +96,3 @@ const WeatherForecast = () => {
 };
 
 export default WeatherForecast;
-
