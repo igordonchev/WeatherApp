@@ -86,14 +86,21 @@ h1 {
 
 /* Additional styles for Current Location Weather Page */
 .current-location-weather-page {
-  padding: 20px;
   display: flex;
   flex-direction: column;
 }
 
 /* Ensure that the navigation menu does not overlap the logo */
-.nav-container img {
+.current-location-weather-page .nav-container img {
   margin-bottom: 20px;
+}
+
+/* Main content styles for Current Location Weather Page */
+.current-location-weather-page .main-content {
+  flex: 1;
+  padding: 20px;
+  max-width: 800px;
+  margin: auto; /* Center the content horizontally */
 }
 
 /* Footer styles */
@@ -120,6 +127,12 @@ h1 {
   padding: 20px;
   max-width: 800px;
   margin: auto; /* Center the content horizontally */
+}
+
+/* Add a line between different days' forecasts */
+.five-day-forecast-page .forecast-day-divider {
+  border-bottom: 2px solid #ddd;
+  margin-bottom: 15px;
 }
 
 /* Additional styles for Weather Forecast Page */

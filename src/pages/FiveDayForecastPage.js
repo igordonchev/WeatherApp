@@ -1,25 +1,23 @@
-// WeatherForecastPage.js
+// FiveDayForecastPage.js
 import React from 'react';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 import Header from '../components/Header';
 import Navigation from '../components/Navigation';
-import WeatherForecast from '../components/WeatherForecast';
+import FiveDayForecast from '../components/FiveDayForecast'; // Update import
 import '../styles/common.css';
 
-const WeatherForecastPage = () => {
+const FiveDayForecastPage = () => {
   return (
-    <div className="weather-forecast-page">
+    <div className="five-day-forecast-page">
       <Header />
       <div className="content-container">
         <Navigation />
         <div className="main-content">
-          {/* Use the WeatherForecast component here */}
-          <WeatherForecast />
+          
+          <FiveDayForecast />
         </div>
       </div>
-      
     </div>
   );
 };
 
-export default WeatherForecastPage;
+export default FiveDayForecastPage;
