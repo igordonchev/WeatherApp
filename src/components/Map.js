@@ -8,7 +8,6 @@ const Map = ({ weatherData }) => {
 
   useEffect(() => {
     if (!mapRef.current && weatherData) {
-      // Map container doesn't exist, and there is weather data
       const newMap = L.map('map').setView([weatherData.coord.lat, weatherData.coord.lon], 13);
 
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {

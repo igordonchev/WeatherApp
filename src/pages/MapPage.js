@@ -1,7 +1,7 @@
 // MapPage.js
 import React, { useEffect, useState } from 'react';
 import api from '../components/api';
-import Map from '../components/Map';  // Update the import path
+import Map from '../components/Map';
 import '../styles/MapPage.css';
 
 // Import your components here
@@ -40,7 +40,20 @@ const MapPage = () => {
         <Navigation />
       </Layout>
 
-      {weatherData && <Map weatherData={weatherData} />}
+      {weatherData && (
+        <div className="weather-info">
+          <Map weatherData={weatherData} />
+
+          <div className="weather-details">
+            <h2>{weatherData.name}</h2>
+            <p>{weatherData.weather[0].description}</p>
+            <p>Temperature: {weatherData.main.temp}&deg;C</p>
+            <p>Humidity: {weatherData.main.humidity}%</p>
+            <p>Wind Speed: {weatherData.wind.speed} m/s</p>
+            {/* Add more weather information as needed */}
+          </div>
+        </div>
+      )}
     </div>
   );
 };
