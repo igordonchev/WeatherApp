@@ -1,0 +1,11 @@
+/* Map.css */
+#map-container {
+    text-align: center;
+    margin: auto;
+  }
+  
+  #map {
+    width: 600px;
+    height: 400px;
+  }
+  
