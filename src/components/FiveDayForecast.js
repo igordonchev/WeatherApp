@@ -1,26 +1,35 @@
-// FiveDayForecast.js
-
 import React, { useState } from 'react';
 import api from './api'; // Adjust the path accordingly
 import '../styles/common.css';
 
 const FiveDayForecast = () => {
   const [location, setLocation] = useState('');
+  const [currentWeather, setCurrentWeather] = useState(null);
   const [forecastData, setForecastData] = useState(null);
   const [error, setError] = useState(null);
 
   const handleGetForecastClick = async () => {
     try {
-      const response = await api.get('/forecast', {
+      // Get current weather for the provided location
+      const currentWeatherResponse = await api.get('/weather', {
         params: {
-          q: location,  // Use the location name
+          q: location,
         },
       });
 
-      setForecastData(response.data);
+      setCurrentWeather(currentWeatherResponse.data);
+
+      // Get 5-day forecast for the provided location
+      const forecastResponse = await api.get('/forecast', {
+        params: {
+          q: location,
+        },
+      });
+
+      setForecastData(forecastResponse.data);
     } catch (error) {
-      console.error('Error fetching forecast data:', error);
-      setError('Error fetching forecast data. Please try again later.');
+      console.error('Error fetching data:', error);
+      setError('Error fetching data. Please try again later.');
     }
   };
 
@@ -37,6 +46,15 @@ const FiveDayForecast = () => {
         </button>
       </form>
       {error && <p>{error}</p>}
+      {currentWeather && (
+        <div>
+          <h2>Current Weather for {currentWeather.name}</h2>
+          <p>Temperature: {currentWeather.main.temp}°C</p>
+          <p>Humidity: {currentWeather.main.humidity}%</p>
+          <p>Wind Speed: {currentWeather.wind.speed} m/s</p>
+          {/* Add more current weather information as needed */}
+        </div>
+      )}
       {forecastData && (
         <div>
           <h2>Forecast for {forecastData.city.name}</h2>

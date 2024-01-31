@@ -1,28 +1,19 @@
 // LocationForm.js
 import React, { useState } from 'react';
 
-const LocationForm = ({ onFormSubmit }) => {
+const LocationForm = ({ onLocationSubmit }) => {
   const [location, setLocation] = useState('');
 
-  const handleLocationChange = (e) => {
-    setLocation(e.target.value);
-  };
-
-  const clearSubmittedLocation = (e) => {
+  const handleLocationSubmit = (e) => {
     e.preventDefault();
-
-    // Check if the location is not empty before submitting
-    if (location.trim() !== '') {
-      onFormSubmit(location);
-      setLocation('');
-    }
+    onLocationSubmit(location);
   };
 
   return (
-    <form onSubmit={clearSubmittedLocation}>
+    <form onSubmit={handleLocationSubmit}>
       <label>
-        Enter Location:
-        <input type="text" value={location} onChange={handleLocationChange} />
+        Location:
+        <input type="text" value={location} onChange={(e) => setLocation(e.target.value)} />
       </label>
       <button type="submit">Get Weather</button>
     </form>
