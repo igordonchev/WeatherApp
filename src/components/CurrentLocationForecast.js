@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import api from './api'; // Adjust the path accordingly
 import '../styles/common.css'; // Ensure this line is present for importing common.css
 
-const CurrentLocationForecast = () => {
+const CurrentLocationForecast = ({ temperatureUnit }) => {
   const [forecastData, setForecastData] = useState(null);
   const [error, setError] = useState(null);
   const [location, setLocation] = useState('');
@@ -17,6 +17,7 @@ const CurrentLocationForecast = () => {
           params: {
             lat: position.latitude,
             lon: position.longitude,
+            units: temperatureUnit === 'celsius' ? 'metric' : 'imperial', // Adjust the unit parameter
           },
         });
 
@@ -29,7 +30,7 @@ const CurrentLocationForecast = () => {
     };
 
     fetchData();
-  }, []);
+  }, [temperatureUnit]);
 
   const getCurrentLocation = () => {
     return new Promise((resolve, reject) => {
@@ -66,7 +67,14 @@ const CurrentLocationForecast = () => {
                 })}
               </p>
               <div style={{ display: 'flex', alignItems: 'center' }}>
-                <p style={{ fontSize: '24px', marginRight: '10px' }}>{Math.round(item.main.temp)}°C</p>
+                <p style={{ fontSize: '24px', marginRight: '10px' }}>
+                  {Math.round(
+                    temperatureUnit === 'celsius'
+                      ? item.main.temp
+                      : (item.main.temp * 9) / 5 + 32 // Convert Celsius to Fahrenheit
+                  )}
+                  °{temperatureUnit === 'celsius' ? 'C' : 'F'}
+                </p>
                 <img
                   src={`http://openweathermap.org/img/wn/${item.weather[0].icon}.png`}
                   alt={`Weather icon for ${item.weather[0].description}`}

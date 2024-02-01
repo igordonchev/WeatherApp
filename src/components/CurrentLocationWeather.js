@@ -1,19 +1,22 @@
+// CurrentLocationWeather.js
 import React, { useState, useEffect } from 'react';
-import api from './api';
+import api from './api'; // Adjust the path accordingly
+import '../styles/common.css';
 
-const CurrentLocationWeather = () => {
+const CurrentLocationWeather = ({ selectedLocation, temperatureUnit }) => {
   const [weatherData, setWeatherData] = useState(null);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const position = await getCurrentLocation();
+        const position = await getCurrentLocation(selectedLocation);
 
         const response = await api.get('/weather', {
           params: {
             lat: position.latitude,
             lon: position.longitude,
+            units: temperatureUnit === 'celsius' ? 'metric' : 'imperial', // Adjust the unit parameter
           },
         });
 
@@ -25,7 +28,7 @@ const CurrentLocationWeather = () => {
     };
 
     fetchData();
-  }, []);
+  }, [selectedLocation, temperatureUnit]);
 
   const getCurrentLocation = () => {
     return new Promise((resolve, reject) => {
@@ -67,7 +70,7 @@ const CurrentLocationWeather = () => {
             <h2 style={{ fontSize: '1.5em' }}>Weather for {weatherData.name}</h2>
             {/* Display actual temperature, weather icon, and current time */}
             <p style={{ fontSize: '3em', fontWeight: 'bold' }}>
-              {Math.round(weatherData.main.temp)} °C{' '}
+              {Math.round(weatherData.main.temp)} °{temperatureUnit === 'celsius' ? 'C' : 'F'}{' '}
               <img
                 src={getWeatherIcon(weatherData.weather[0].icon)}
                 alt={weatherData.weather[0].description}

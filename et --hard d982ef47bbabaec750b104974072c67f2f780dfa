@@ -1,0 +1,143 @@
+[33mcommit d982ef47bbabaec750b104974072c67f2f780dfa[m[33m ([m[1;36mHEAD[m[33m)[m
+Author: IgorDonchev <igor.donchev@gmail.com>
+Date:   Wed Jan 31 23:39:54 2024 +0100
+
+    home locatin form
+
+[33mcommit 008eef064edee21cecdc99f9aa2caae27778af42[m
+Author: IgorDonchev <igor.donchev@gmail.com>
+Date:   Wed Jan 31 22:43:27 2024 +0100
+
+    map page added
+
+[33mcommit 10edb86a9ad362f6c61bd275fb63152f162227a0[m
+Author: IgorDonchev <igor.donchev@gmail.com>
+Date:   Wed Jan 31 03:15:41 2024 +0100
+
+    Enhanced MapPage with detailed weather information and icons
+
+[33mcommit 47bf9afcd9a8ffccea76c2e033136df08334e5b4[m
+Author: IgorDonchev <igor.donchev@gmail.com>
+Date:   Wed Jan 31 03:08:34 2024 +0100
+
+    Updated Map.js to resolve map initialization issue
+
+[33mcommit d463e3c520b5a2cfae25b864adf8bec89288d26d[m
+Author: IgorDonchev <igor.donchev@gmail.com>
+Date:   Wed Jan 31 02:04:57 2024 +0100
+
+    Update MapPage with current location and marker
+
+[33mcommit fe5e643d97cea0d7106a71a9a7627a9c2b3802ae[m
+Author: IgorDonchev <igor.donchev@gmail.com>
+Date:   Tue Jan 30 13:21:07 2024 +0100
+
+    Your commit message here
+
+[33mcommit 212cf93a343779ed24e0cfaafb6f77ce327f5c62[m
+Author: IgorDonchev <igor.donchev@gmail.com>
+Date:   Mon Jan 29 23:38:28 2024 +0100
+
+    Your commit message here1~
+
+[33mcommit e9cd9a9f2e77c716d3322760d35691261ea13945[m
+Author: igordonchev <153498449+igordonchev@users.noreply.github.com>
+Date:   Wed Jan 24 18:03:08 2024 -0800
+
+    weather-forecast design
+
+[33mcommit 10eb75896d1d31801784165feffa4458df06f743[m
+Author: igordonchev <153498449+igordonchev@users.noreply.github.com>
+Date:   Wed Jan 24 17:13:01 2024 -0800
+
+    5 DAYS final css
+
+[33mcommit 5642f7e611c928c19b44d9d884badfd9ace36849[m
+Author: igordonchev <153498449+igordonchev@users.noreply.github.com>
+Date:   Wed Jan 24 16:37:05 2024 -0800
+
+    5 days design final
+
+[33mcommit 9983d30a3f90d484fce6091904eb374c5aee6a1f[m
+Author: igordonchev <153498449+igordonchev@users.noreply.github.com>
+Date:   Wed Jan 24 16:00:32 2024 -0800
+
+    5 days hourly
+
+[33mcommit 25cb4765a5a1e017f4aabaca016bb03393d8b909[m
+Author: igordonchev <153498449+igordonchev@users.noreply.github.com>
+Date:   Wed Jan 24 15:02:28 2024 -0800
+
+    5 days daily added
+
+[33mcommit a15bbf908889fc566b46eccffa4e4e9d32f034f7[m
+Author: igordonchev <153498449+igordonchev@users.noreply.github.com>
+Date:   Tue Jan 23 13:31:08 2024 -0800
+
+    home design
+
+[33mcommit a6863e466f8bf6dc662121a88d2061814eb2e175[m
+Author: igordonchev <153498449+igordonchev@users.noreply.github.com>
+Date:   Mon Jan 22 17:05:14 2024 -0800
+
+    final design
+
+[33mcommit d7daf87edeed0ba8c37b49d4eb099841d1ab3296[m
+Author: igordonchev <153498449+igordonchev@users.noreply.github.com>
+Date:   Mon Jan 22 16:51:08 2024 -0800
+
+    navigation
+
+[33mcommit 3b44a448240f3cc84986d50101aec560964d8c7c[m
+Author: igordonchev <153498449+igordonchev@users.noreply.github.com>
+Date:   Mon Jan 22 14:52:42 2024 -0800
+
+    Add feature XYZ
+
+[33mcommit a2c31e8cd31cb453eb79bd5e5f0d20f18ffbd275[m
+Author: igordonchev <153498449+igordonchev@users.noreply.github.com>
+Date:   Sun Jan 21 17:48:58 2024 -0800
+
+    Updated WeatherForecast.js to handle form submission
+
+[33mcommit 7a7eafffa3388a185bc85bc9fdacb2503d057f52[m
+Author: igordonchev <153498449+igordonchev@users.noreply.github.com>
+Date:   Wed Jan 17 18:10:45 2024 -0800
+
+    Your commit message here
+
+[33mcommit 152c0f19cae02246f28f9843992be7dc3e1799ae[m
+Author: igordonchev <153498449+igordonchev@users.noreply.github.com>
+Date:   Wed Jan 17 17:53:31 2024 -0800
+
+    Your commit message here
+
+[33mcommit 6ab65f484bb084865af91ad16a76accc2badce54[m
+Author: igordonchev <153498449+igordonchev@users.noreply.github.com>
+Date:   Wed Jan 17 17:17:57 2024 -0800
+
+    Your descriptive commit message here
+
+[33mcommit 52ce63194c8caf69a4acb97331c988c232216d3e[m
+Author: igordonchev <153498449+igordonchev@users.noreply.github.com>
+Date:   Wed Jan 17 12:12:15 2024 -0800
+
+    Your commit message here
+
+[33mcommit 98aba54af1e843c1a8b4040431bb686a7f3aab06[m
+Author: igordonchev <153498449+igordonchev@users.noreply.github.com>
+Date:   Tue Jan 16 16:11:19 2024 -0800
+
+    Your commit message here
+
+[33mcommit 9de533abf83f726b7b872b7588b4a0e0d3a11d90[m
+Author: igordonchev <153498449+igordonchev@users.noreply.github.com>
+Date:   Tue Jan 16 15:43:42 2024 -0800
+
+    Your commit message here
+
+[33mcommit 133214f127b91dea42e9c81a2573ed200dc4ae11[m
+Author: igordonchev <153498449+igordonchev@users.noreply.github.com>
+Date:   Tue Jan 16 06:26:24 2024 -0800
+
+    Initialize project using Create React App
