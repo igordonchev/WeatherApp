@@ -1,8 +1,8 @@
-// Home.js
 import React, { useState } from 'react';
 import Layout from '../components/Layout';
 import CurrentLocationWeather from '../components/CurrentLocationWeather';
 import CurrentLocationForecast from '../components/CurrentLocationForecast';
+
 import '../styles/common.css';
 
 const Home = () => {
@@ -25,6 +25,7 @@ const Home = () => {
             </button>
           </div>
 
+          {/* Other components */}
           <CurrentLocationWeather
             selectedLocation={selectedLocation}
             temperatureUnit={temperatureUnit}
