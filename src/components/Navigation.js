@@ -7,8 +7,8 @@ const Navigation = () => {
       <Link to="/">Home</Link>
       <Link to="/current-location-weather">Current Location Weather</Link>
       <Link to="/five-day-forecast">Five Day Forecast</Link>
-      {/* Add a link to MapPage */}
-      <Link to="/map">Map</Link>
+      <Link to="/map">Map</Link> {/* Add a link to MapPage */}
+      <Link to="/animation">Animation</Link> {/* Add a link to AnimationPage */}
     </nav>
   );
 };
