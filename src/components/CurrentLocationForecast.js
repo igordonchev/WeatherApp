@@ -1,6 +1,7 @@
-// CurrentLocationForecast.js
 import React, { useState, useEffect } from 'react';
 import api from './api'; // Adjust the path accordingly
+import AnimationComponent from './AnimationComponent'; // Import AnimationComponent
+import sunnyAnimationData from '../animations/sunny.json'; // Import sunny animation data
 import '../styles/common.css'; // Ensure this line is present for importing common.css
 
 const CurrentLocationForecast = ({ temperatureUnit }) => {
@@ -90,6 +91,10 @@ const CurrentLocationForecast = ({ temperatureUnit }) => {
               <p>{item.weather[0].description}</p>
               <p>Humidity: {item.main.humidity}%</p>
               <p>Wind Speed: {item.wind.speed} m/s</p>
+              {/* Render AnimationComponent if the weather is predicted to be 'clear sky' */}
+              {item.weather[0].description.toLowerCase() === 'clear sky' && (
+                <AnimationComponent animationData={sunnyAnimationData} />
+              )}
               {index < forecastData.list.length - 1 && <div className="forecast-day-divider"></div>}
             </div>
           ))}
