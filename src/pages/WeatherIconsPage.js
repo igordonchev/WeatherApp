@@ -22,7 +22,7 @@ const AnimationPage = () => {
     <div>
       <h1>Animation Page</h1>
       {iconUrls.map((url, index) => (
-        <AnimatedIconComponent key={index} iconUrl={process.env.PUBLIC_URL + url} />
+        <AnimatedIconComponent key={index} iconUrl={url} />
       ))}
     </div>
   );

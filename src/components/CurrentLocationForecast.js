@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import api from './api'; // Adjust the path accordingly
 import AnimationComponent from './AnimationComponent'; // Import AnimationComponent
-import sunnyAnimationData from '../animations/sunny.json'; // Import sunny animation data
 import '../styles/common.css'; // Ensure this line is present for importing common.css
 
 const CurrentLocationForecast = ({ temperatureUnit }) => {
@@ -51,6 +50,37 @@ const CurrentLocationForecast = ({ temperatureUnit }) => {
     });
   };
 
+  const renderAnimation = (description, hour) => {
+    // Check if the hour is between 6 and 18 for daytime
+    if (hour >= 6 && hour < 18) {
+      let animationType = '';
+      switch (description.toLowerCase()) {
+        case 'snow':
+          animationType = 'snow';
+          break;
+        case 'broken clouds':
+          animationType = 'brokenclouds';
+          break;
+        case 'thunderstorm':
+          animationType = 'thunderstorm';
+          break;
+        case 'scattered clouds':
+          animationType = 'scatteredclouds';
+          break;
+        case 'few clouds':
+          animationType = 'fewclouds';
+          break;
+        default:
+          animationType = 'sunny';
+          break;
+      }
+
+      return <AnimationComponent animationType={animationType} />;
+    }
+
+    return null; // Return null if the hour is not between 6 and 18
+  };
+
   return (
     <div className="content-container">
       {error && <p>{error}</p>}
@@ -76,6 +106,8 @@ const CurrentLocationForecast = ({ temperatureUnit }) => {
                   )}
                   °{temperatureUnit === 'celsius' ? 'C' : 'F'}
                 </p>
+                {/* Render AnimationComponent based on the weather description */}
+                {renderAnimation(item.weather[0].description, new Date(item.dt * 1000).getHours())}
                 <img
                   src={`http://openweathermap.org/img/wn/${item.weather[0].icon}.png`}
                   alt={`Weather icon for ${item.weather[0].description}`}
@@ -91,10 +123,6 @@ const CurrentLocationForecast = ({ temperatureUnit }) => {
               <p>{item.weather[0].description}</p>
               <p>Humidity: {item.main.humidity}%</p>
               <p>Wind Speed: {item.wind.speed} m/s</p>
-              {/* Render AnimationComponent if the weather is predicted to be 'clear sky' */}
-              {item.weather[0].description.toLowerCase() === 'clear sky' && (
-                <AnimationComponent animationData={sunnyAnimationData} />
-              )}
               {index < forecastData.list.length - 1 && <div className="forecast-day-divider"></div>}
             </div>
           ))}
