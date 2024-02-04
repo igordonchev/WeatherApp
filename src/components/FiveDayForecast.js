@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import api from './api'; // Adjust the path accordingly
+import AnimationComponent from './AnimationComponent'; // Import AnimationComponent
 import '../styles/common.css';
 
 const FiveDayForecast = () => {
@@ -8,6 +9,24 @@ const FiveDayForecast = () => {
   const [forecastData, setForecastData] = useState(null);
   const [error, setError] = useState(null);
   const [selectedUnit, setSelectedUnit] = useState('metric'); // Default unit is Celsius
+
+  // Function to determine the animation type based on weather description
+  const getAnimationType = (description) => {
+    switch (description.toLowerCase()) {
+      case 'snow':
+        return 'snow';
+      case 'broken clouds':
+        return 'brokenclouds';
+      case 'thunderstorm':
+        return 'thunderstorm';
+      case 'scattered clouds':
+        return 'scatteredclouds';
+      case 'few clouds':
+        return 'fewclouds';
+      default:
+        return 'sunny';
+    }
+  };
 
   const handleGetForecastClick = async () => {
     try {
@@ -44,6 +63,55 @@ const FiveDayForecast = () => {
   // Function to convert temperature from Celsius to Fahrenheit
   const convertCelsiusToFahrenheit = (celsius) => {
     return Math.round((celsius * 9) / 5 + 32);
+  };
+
+  // Function to determine the animation type based on the current weather description
+  const renderAnimation = (description, hour) => {
+    if (hour >= 6 && hour < 18) {
+      const animationType = getAnimationType(description);
+      return <AnimationComponent animationType={animationType} />;
+    }
+
+    return null;
+  };
+
+  useEffect(() => {
+    // Fetch current weather data on mount
+    const fetchCurrentWeather = async () => {
+      try {
+        const position = await getCurrentLocation();
+
+        const response = await api.get('/weather', {
+          params: {
+            lat: position.latitude,
+            lon: position.longitude,
+          },
+        });
+
+        setCurrentWeather(response.data);
+      } catch (error) {
+        console.error('Error fetching current weather data:', error);
+      }
+    };
+
+    fetchCurrentWeather();
+  }, []);
+
+  const getCurrentLocation = () => {
+    return new Promise((resolve, reject) => {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          resolve({
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude,
+          });
+        },
+        (error) => {
+          console.error('Error getting location:', error);
+          reject(error);
+        }
+      );
+    });
   };
 
   return (
@@ -95,6 +163,8 @@ const FiveDayForecast = () => {
                 <p style={{ fontSize: '24px', marginRight: '10px' }}>
                   {selectedUnit === 'metric' ? Math.round(item.main.temp) : convertCelsiusToFahrenheit(item.main.temp)}&deg;{selectedUnit === 'metric' ? 'C' : 'F'}
                 </p>
+                {/* Render AnimationComponent based on the weather description */}
+                {renderAnimation(item.weather[0].description, new Date(item.dt * 1000).getHours())}
                 <img
                   src={`http://openweathermap.org/img/wn/${item.weather[0].icon}.png`}
                   alt={`Weather icon for ${item.weather[0].description}`}
@@ -108,7 +178,6 @@ const FiveDayForecast = () => {
                 </p>
               </div>
               <p>{item.weather[0].description}</p>
-              {/* Additional information from the API */}
               <p>Humidity: {item.main.humidity}%</p>
               <p>Wind Speed: {item.wind.speed} m/s</p>
               {/* Add more details as needed */}
