@@ -1,8 +1,9 @@
-// CurrentLocationWeather.js
+// Import React, useState, useEffect, and other necessary dependencies
 import React, { useState, useEffect } from 'react';
 import api from './api'; // Adjust the path accordingly
 import '../styles/common.css';
 
+// CurrentLocationWeather component
 const CurrentLocationWeather = ({ selectedLocation, temperatureUnit }) => {
   const [weatherData, setWeatherData] = useState(null);
   const [error, setError] = useState(null);
@@ -10,7 +11,7 @@ const CurrentLocationWeather = ({ selectedLocation, temperatureUnit }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const position = await getCurrentLocation(selectedLocation);
+        const position = await getCurrentLocation();
 
         const response = await api.get('/weather', {
           params: {
@@ -28,7 +29,7 @@ const CurrentLocationWeather = ({ selectedLocation, temperatureUnit }) => {
     };
 
     fetchData();
-  }, [selectedLocation, temperatureUnit]);
+  }, [temperatureUnit]);
 
   const getCurrentLocation = () => {
     return new Promise((resolve, reject) => {
@@ -81,7 +82,6 @@ const CurrentLocationWeather = ({ selectedLocation, temperatureUnit }) => {
             <p style={{ fontSize: '1.2em' }}>
               {new Date().toLocaleDateString(undefined, {
                 weekday: 'long',
-                year: 'numeric',
                 month: 'long',
                 day: 'numeric',
               })}

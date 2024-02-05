@@ -1,4 +1,5 @@
 /* common.css */
+
 /* Reset some default browser styles */
 body,
 h1,
@@ -72,8 +73,8 @@ h1 {
 .content-container {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  margin-top: 80px;
+  align-items: center; /* Updated to center vertically as well */
+  min-height: 100vh; /* Ensure content takes at least the full height of the viewport */
 }
 
 /* Main content styles */
@@ -81,6 +82,7 @@ h1 {
   flex: 1;
   padding: 20px;
   max-width: 800px;
+  text-align: center; /* Center text within the content container */
 }
 
 /* Additional styles for Current Location Weather Page */
