@@ -1,5 +1,14 @@
+/* common.css */
 /* Reset some default browser styles */
-body, h1, p {
+body,
+h1,
+h2,
+h3,
+p,
+ul,
+li,
+figure,
+figcaption {
   margin: 0;
   padding: 0;
 }
@@ -11,6 +20,26 @@ body {
 /* Apply a box-sizing border-box model to all elements */
 * {
   box-sizing: border-box;
+}
+
+/* Header styles */
+header {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: #eee;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+img {
+  max-width: 100%;
+  max-height: 80px;
+  margin-right: 10px;
+}
+
+h1 {
+  margin: 0;
 }
 
 /* Navigation styles */
@@ -61,6 +90,87 @@ body {
   flex-direction: column;
 }
 
+/* Ensure that the navigation menu does not overlap the logo */
+.nav-container img {
+  margin-bottom: 20px;
+}
+
+/* Footer styles */
+.footer {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #eee;
+}
+
+.footer-content {
+  text-align: center;
+}
+
+/* Additional styles for Five Day Forecast Page */
+.five-day-forecast-page {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Main content styles for Five Day Forecast Page */
+.five-day-forecast-page .main-content {
+  flex: 1;
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
+}
+
+/* Additional styles for Weather Forecast Page */
+.forecast-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.forecast-item img {
+  max-width: 30px;
+  margin-right: 10px;
+}
+
+/* Additional styles for FiveDaysShortForecast component */
+.five-days-short-forecast {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  margin: auto;
+  max-width: 800px;
+}
+
+/* Main content styles for FiveDaysShortForecast component */
+.five-days-short-forecast .main-content {
+  flex: 1;
+  padding: 20px;
+  max-width: 800px;
+}
+
+/* Additional styles for User Location Form */
+.user-location-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  margin: auto;
+  max-width: 800px;
+}
+
+/* Main content styles for User Location Form */
+.user-location-form .main-content {
+  flex: 1;
+  padding: 20px;
+  max-width: 800px;
+}
+
 /* Additional styles for Current Location Forecast Page */
 .current-location-forecast-page {
   display: flex;
@@ -78,3 +188,38 @@ body {
   padding: 20px;
   max-width: 800px;
 }
+
+/* Home page styles */
+.home-page .main-content {
+  text-align: center;
+}
+
+.home-page button {
+  margin: 20px;
+  padding: 10px;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+.home-page h1,
+.home-page button,
+.home-page .content-container {
+  margin-bottom: 20px;
+}
+
+.home-page .animation-component {
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.home-page .current-location-weather {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home-page .current-location-weather p {
+  margin: 10px 0;
+}
+
+/* ... (other styles) */

@@ -1,6 +1,6 @@
-// Header.js
 import React from 'react';
 import { Link } from 'react-router-dom';
+import '../styles/header.css'; // Adjust the path based on your project structure
 
 const Header = () => {
   return (
@@ -10,7 +10,7 @@ const Header = () => {
         <img
           src="/assets/images/weather.jpg" // Update with the correct path
           alt="Weather App Logo"
-          style={{ maxWidth: '100px', marginRight: '10px' }} // Adjust size
+          className="logo" // Apply the logo class
         />
       </Link>
 

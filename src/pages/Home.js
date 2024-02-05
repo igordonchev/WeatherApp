@@ -1,14 +1,15 @@
+// Home.js
 import React, { useState } from 'react';
 import Layout from '../components/Layout';
 import CurrentLocationWeather from '../components/CurrentLocationWeather';
 import CurrentLocationForecast from '../components/CurrentLocationForecast';
-import AnimationComponent from '../components/AnimationComponent'; // Import AnimationComponent
-import sunnyAnimationData from '../animations/sunny.json'; // Import sunny animation data
+import AnimationComponent from '../components/AnimationComponent';
+import sunnyAnimationData from '../animations/sunny.json';
 import '../styles/common.css';
 
 const Home = () => {
   const [selectedLocation, setSelectedLocation] = useState(null);
-  const [temperatureUnit, setTemperatureUnit] = useState('celsius'); // Default unit is Celsius
+  const [temperatureUnit, setTemperatureUnit] = useState('celsius');
 
   const handleToggleUnit = () => {
     setTemperatureUnit((prevUnit) => (prevUnit === 'celsius' ? 'fahrenheit' : 'celsius'));
@@ -26,7 +27,6 @@ const Home = () => {
             </button>
           </div>
 
-          {/* Render AnimationComponent if the weather is predicted to be 'clear sky' */}
           <CurrentLocationWeather
             selectedLocation={selectedLocation}
             temperatureUnit={temperatureUnit}
@@ -35,6 +35,7 @@ const Home = () => {
             selectedLocation={selectedLocation}
             temperatureUnit={temperatureUnit}
           />
+
           {selectedLocation && (
             <AnimationComponent animationData={sunnyAnimationData} />
           )}

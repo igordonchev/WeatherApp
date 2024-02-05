@@ -89,22 +89,20 @@ const CurrentLocationForecast = ({ temperatureUnit }) => {
           <h2>{`5 Days Hourly Forecast for ${location}`}</h2>
           {forecastData.list.map((item, index) => (
             <div key={item.dt}>
-              <p>
-                {new Intl.DateTimeFormat('en-US', { weekday: 'long' }).format(new Date(item.dt * 1000))}
-                {', '}
-                {new Date(item.dt * 1000).toLocaleDateString([], {
-                  month: 'long',
-                  day: 'numeric',
-                })}
-              </p>
-              <div style={{ display: 'flex', alignItems: 'center' }}>
-                <p style={{ fontSize: '24px', marginRight: '10px' }}>
+              <p style={{ fontSize: '1.5em', fontWeight: 'bold' }}>{`${new Intl.DateTimeFormat('en-US', { weekday: 'long' }).format(new Date(item.dt * 1000))}, ${new Date(item.dt * 1000).toLocaleDateString([], { month: 'long', day: 'numeric' })}`}</p>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <p style={{ fontSize: '24px', marginRight: '10px', textAlign: 'center' }}>
                   {Math.round(
                     temperatureUnit === 'celsius'
                       ? item.main.temp
                       : (item.main.temp * 9) / 5 + 32 // Convert Celsius to Fahrenheit
                   )}
-                  °{temperatureUnit === 'celsius' ? 'C' : 'F'}
+                  °{temperatureUnit === 'celsius' ? 'C' : 'F'}{' '}
+                  {new Date(item.dt * 1000).toLocaleTimeString('en-US', {
+                    hour: 'numeric',
+                    hour12: false,
+                    hourCycle: 'h23', // Display hours in 24-hour format
+                  }).replace(/^0/, '')}H
                 </p>
                 {/* Render AnimationComponent based on the weather description */}
                 {renderAnimation(item.weather[0].description, new Date(item.dt * 1000).getHours())}
@@ -112,18 +110,11 @@ const CurrentLocationForecast = ({ temperatureUnit }) => {
                   src={`http://openweathermap.org/img/wn/${item.weather[0].icon}.png`}
                   alt={`Weather icon for ${item.weather[0].description}`}
                 />
-                <p style={{ fontSize: '24px', marginLeft: '10px' }}>
-                  {new Date(item.dt * 1000).toLocaleTimeString('en-US', {
-                    hour: 'numeric',
-                    hour12: false,
-                    hourCycle: 'h23', // Display hours in 24-hour format
-                  }).replace(/^0/, '')}H
-                </p>
               </div>
               <p>{item.weather[0].description}</p>
               <p>Humidity: {item.main.humidity}%</p>
               <p>Wind Speed: {item.wind.speed} m/s</p>
-              {index < forecastData.list.length - 1 && <div className="forecast-day-divider"></div>}
+              {index < forecastData.list.length - 1 && <br />} {/* Add <br /> between forecast results */}
             </div>
           ))}
         </div>
